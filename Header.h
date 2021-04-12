@@ -14,6 +14,14 @@ enum Key {
     SHRUB //Кустарник
 };
 
+//Среда обитания
+enum Habitation {
+    TUNDRA, //Тундра
+    DESERT, //Пустыня
+    STEPPE, //Степь
+    TAIGA //Тайга
+};
+
 //Структура "дерево"
 struct Tree {
     long int Age; //Возраст дерева
@@ -50,6 +58,8 @@ struct Plant {
         Tree T;
         Shrub S;
     };
+
+    Habitation H;
 };
 
 //Структура "контейнер"
@@ -79,10 +89,10 @@ void Out_Plant(Plant* P, ofstream& ofst);
 
 void In_Tree(Tree& T, ifstream& ifst);
 
-void Out_Tree(string Name, Tree& T, ofstream& ofst);
+void Out_Tree(string Name, Habitation H, Tree& T, ofstream& ofst);
 
 void In_Shrub(Shrub& S, ifstream& ifst);
 
-void Out_Shrub(string Name, Shrub& S, ofstream& ofst);
+void Out_Shrub(string Name, Habitation H, Shrub& S, ofstream& ofst);
 
 #endif // HEADER_H

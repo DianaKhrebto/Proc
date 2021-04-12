@@ -56,6 +56,23 @@ Plant* In_Plant(ifstream& ifst) {
         
         ifst >> P->Name;
 
+        string Habitant = "";
+
+        ifst >> Habitant;
+
+        if (Habitant == "Tundra") {
+            P->H = TUNDRA;
+        }
+        else if (Habitant == "Desert") {
+            P->H = DESERT;
+        }
+        else if (Habitant == "Steppe") {
+            P->H = STEPPE;
+        }
+        else if (Habitant == "Taiga") {
+            P->H = TAIGA;
+        }
+
         In_Tree(P->T, ifst);
     }
     else if (K == 2) {
@@ -63,6 +80,23 @@ Plant* In_Plant(ifstream& ifst) {
         P->K = SHRUB;
 
         ifst >> P->Name;
+
+        string Habitant = "";
+
+        ifst >> Habitant;
+
+        if (Habitant == "Tundra") {
+            P->H = TUNDRA;
+        }
+        else if (Habitant == "Desert") {
+            P->H = DESERT;
+        }
+        else if (Habitant == "Steppe") {
+            P->H = STEPPE;
+        }
+        else if (Habitant == "Taiga") {
+            P->H = TAIGA;
+        }
 
         In_Shrub(P->S, ifst);
     }
@@ -72,10 +106,10 @@ Plant* In_Plant(ifstream& ifst) {
 
 void Out_Plant(Plant* P, ofstream& ofst) {
     if (P->K == TREE) {
-        Out_Tree(P->Name, P->T, ofst);
+        Out_Tree(P->Name, P->H, P->T, ofst);
     }
     else if (P->K == SHRUB) {
-        Out_Shrub(P->Name, P->S, ofst);
+        Out_Shrub(P->Name, P->H, P->S, ofst);
     }
     else {
         ofst << "Incorrect element!" << endl << endl;
@@ -86,9 +120,25 @@ void In_Tree(Tree& T, ifstream& ifst) {
     ifst >> T.Age;
 }
 
-void Out_Tree(string Name, Tree& T, ofstream& ofst) {
+void Out_Tree(string Name, Habitation H, Tree& T, ofstream& ofst) {
     ofst << "It's a tree with name: " << Name << endl;
-    ofst << "Tree's age is " << T.Age << endl << endl;
+    ofst << "Tree's age is " << T.Age << endl;
+    ofst << "Tree's habitation is " ;
+
+    if (H == TUNDRA) {
+        ofst << "Tundra";
+    }
+    else if (H == DESERT) {
+        ofst << "Desert";
+    }
+    else if (H == STEPPE) {
+        ofst << "Steppe";
+    }
+    else if (H == TAIGA) {
+        ofst << "Taiga";
+    }
+
+    ofst << endl << endl;
 }
 
 void In_Shrub(Shrub& S, ifstream& ifst) {
@@ -134,7 +184,7 @@ void In_Shrub(Shrub& S, ifstream& ifst) {
     }
 }
 
-void Out_Shrub(string Name, Shrub& S, ofstream& ofst) {
+void Out_Shrub(string Name, Habitation H, Shrub& S, ofstream& ofst) {
     ofst << "It's a shrub with name: " << Name << endl;
     ofst << "Shrub's flowering month is ";
 
@@ -173,6 +223,23 @@ void Out_Shrub(string Name, Shrub& S, ofstream& ofst) {
     }
     else if (S.M == S.DECEMBER) {
         ofst << "December";
+    }
+
+    ofst << endl;
+
+    ofst << "Shrub's habitation is ";
+
+    if (H == TUNDRA) {
+        ofst << "Tundra";
+    }
+    else if (H == DESERT) {
+        ofst << "Desert";
+    }
+    else if (H == STEPPE) {
+        ofst << "Steppe";
+    }
+    else if (H == TAIGA) {
+        ofst << "Taiga";
     }
 
     ofst << endl << endl;
