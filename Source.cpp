@@ -47,6 +47,30 @@ void Clear_Container(Container* Head) {
     }
 }
 
+void Sort(Container* Head) {
+    if (Head->Len > 1) {
+        Container* First = Head;
+        Container* Second = Head->Next;
+
+        Container* Temp = new Container;
+
+        while (First->Next && First->Next->Next) {
+            while (Second && Second->Next) {
+                if (Compare(First->Cont, Second->Cont)) {
+                    Temp->Cont = First->Cont;
+                    First->Cont = Second->Cont;
+                    Second->Cont = Temp->Cont;
+                }
+
+                Second = Second->Next;
+            }
+
+            First = First->Next;
+            Second = First->Next;
+        }
+    }
+}
+
 Plant* In_Plant(ifstream& ifst) {
     Plant* P = NULL;
     int K;
@@ -95,6 +119,10 @@ int Plant_consonant_letters(Plant* P) {
     else {
         return -1;
     }
+}
+
+bool Compare(Plant* First, Plant* Second) {
+    return Plant_consonant_letters(First) > Plant_consonant_letters(Second);
 }
 
 void In_Tree(Tree& T, ifstream& ifst) {

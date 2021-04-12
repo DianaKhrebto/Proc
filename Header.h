@@ -71,6 +71,9 @@ void Out_Container(Container* Head, ofstream& ofst);
 //Функция очистки контейнера
 void Clear_Container(Container* Head);
 
+//Функция сортировки контейнера
+void Sort(Container* Head);
+
 //Функция ввода растения
 Plant* In_Plant(ifstream& ifst);
 
@@ -79,6 +82,9 @@ void Out_Plant(Plant* P, ofstream& ofst);
 
 //Функция подсчета числа согласных букв в названии растения
 int Plant_consonant_letters(Plant* P);
+
+//Функция сравнения числа согласных букв в названиях растений 
+bool Compare(Plant* First, Plant* Second);
 
 //Функция ввода дерева
 void In_Tree(Tree& T, ifstream& ifst);
