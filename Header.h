@@ -77,12 +77,25 @@ Plant* In_Plant(ifstream& ifst);
 //Функция вывода растения
 void Out_Plant(Plant* P, ofstream& ofst);
 
+//Функция подсчета числа согласных букв в названии растения
+int Plant_consonant_letters(Plant* P);
+
+//Функция ввода дерева
 void In_Tree(Tree& T, ifstream& ifst);
 
+//Функция вывода дерева
 void Out_Tree(string Name, Tree& T, ofstream& ofst);
 
+//Функция подсчета числа согласных букв в названии дерева
+int Tree_consonant_letters(string Name);
+
+//Функция ввода кустарника
 void In_Shrub(Shrub& S, ifstream& ifst);
 
+//Функция вывода кустарника
 void Out_Shrub(string Name, Shrub& S, ofstream& ofst);
+
+//Функция подсчета числа согласных букв в названии кустарника
+int Shrub_consonant_letters(string Name);
 
 #endif // HEADER_H
