@@ -44,6 +44,22 @@ void Clear_Container(Container* Head) {
     }
 }
 
+void Out_Only_Tree(Container* Head, ofstream& ofst) {
+    ofst << "Only Trees." << endl << endl;
+
+    Container* Temp_Head = Head;
+
+    for (int i = 0; i < Head->Len; i++) {
+        //Проверка того, что растение - дерево
+        if (Temp_Head->Cont->K == TREE) {
+            ofst << i << ": ";
+            Out_Plant(Temp_Head->Cont, ofst);
+        }
+
+        Temp_Head = Temp_Head->Next;
+    }
+}
+
 Plant* In_Plant(ifstream& ifst) {
     Plant* P = NULL;
     int K;
