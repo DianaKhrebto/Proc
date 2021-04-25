@@ -1,4 +1,7 @@
-﻿#include <iostream>
+﻿// 3lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
 
 #include "Header.h"
 
@@ -28,6 +31,8 @@ int main(int argc, char* argv[]) {
     Sort(Head); //Сортировка контейнера
 
     Out_Container(Head, ofst); //Вывод контейнера
+
+    Out_Only_Tree(Head, ofst); //Вывод только деревьев
 
     Clear_Container(Head); //Очистка контейнера
 

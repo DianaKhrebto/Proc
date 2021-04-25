@@ -95,6 +95,9 @@ void Out_Container(Container* Head, ofstream& ofst);
 //Функция очистки контейнера
 void Clear_Container(Container* Head);
 
+//Функция вывода только деревьев
+void Out_Only_Tree(Container* Head, ofstream& ofst);
+
 //Функция сортировки контейнера
 void Sort(Container* Head);
 
@@ -128,10 +131,13 @@ void Out_Shrub(string Name, Habitation H, Shrub& S, ofstream& ofst);
 //Функция подсчета числа согласных букв в названии кустарника
 int Shrub_consonant_letters(string Name);
 
+//Функция ввода цветка
 void In_Flower(Flower& F, ifstream& ifst);
 
+//Функция вывода цветка
 void Out_Flower(string Name, Habitation H, Flower& F, ofstream& ofst);
 
+//Функция подсчета числа согласных букв в названии цветка
 int Flower_consonant_letters(string Name);
 
 #endif // HEADER_H
