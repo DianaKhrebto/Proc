@@ -133,6 +133,23 @@ Plant* In_Plant(ifstream& ifst) {
 
         ifst >> P->Name;
 
+        string Habitant = "";
+
+        ifst >> Habitant;
+
+        if (Habitant == "Tundra") {
+            P->H = TUNDRA;
+        }
+        else if (Habitant == "Desert") {
+            P->H = DESERT;
+        }
+        else if (Habitant == "Steppe") {
+            P->H = STEPPE;
+        }
+        else if (Habitant == "Taiga") {
+            P->H = TAIGA;
+        }
+
         In_Flower(P->F, ifst);
     }
     
@@ -147,7 +164,7 @@ void Out_Plant(Plant* P, ofstream& ofst) {
         Out_Shrub(P->Name, P->H, P->S, ofst);
     }
     else if (P->K == FLOWER) {
-        Out_Flower(P->Name, P->F, ofst);
+        Out_Flower(P->Name, P->H, P->F, ofst);
     }
     else {
         ofst << "Incorrect element!" << endl << endl;
@@ -180,7 +197,7 @@ void In_Tree(Tree& T, ifstream& ifst) {
 void Out_Tree(string Name, Habitation H, Tree& T, ofstream& ofst) {
     ofst << "It's a tree with name: " << Name << endl;
     ofst << "Tree's age is " << T.Age << endl;
-    ofst << "Tree's habitation is " ;
+    ofst << "Tree's habitation is ";
 
     if (H == TUNDRA) {
         ofst << "Tundra";
@@ -301,7 +318,7 @@ void Out_Shrub(string Name, Habitation H, Shrub& S, ofstream& ofst) {
 
     ofst << endl;
 
-    ofst << "Shrub's habitation is ";
+    ofst << "Shrubs's habitation is ";
 
     if (H == TUNDRA) {
         ofst << "Tundra";
@@ -352,7 +369,7 @@ void In_Flower(Flower& F, ifstream& ifst) {
     }
 }
 
-void Out_Flower(string Name, Flower& F, ofstream& ofst) {
+void Out_Flower(string Name, Habitation H, Flower& F, ofstream& ofst) {
     ofst << "It's a flower with name: " << Name << endl;
     ofst << "Flower's type is ";
 
@@ -364,6 +381,23 @@ void Out_Flower(string Name, Flower& F, ofstream& ofst) {
     }
     else if (F.T == F.WILD) {
         ofst << "Wild";
+    }
+
+    ofst << endl;
+
+    ofst << "Flower's habitation is ";
+
+    if (H == TUNDRA) {
+        ofst << "Tundra";
+    }
+    else if (H == DESERT) {
+        ofst << "Desert";
+    }
+    else if (H == STEPPE) {
+        ofst << "Steppe";
+    }
+    else if (H == TAIGA) {
+        ofst << "Taiga";
     }
 
     ofst << endl << endl;

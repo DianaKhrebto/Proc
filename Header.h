@@ -15,6 +15,14 @@ enum Key {
     FLOWER //Цветок
 };
 
+//Среда обитания
+enum Habitation {
+    TUNDRA, //Тундра
+    DESERT, //Пустыня
+    STEPPE, //Степь
+    TAIGA //Тайга
+};
+
 //Структура "дерево"
 struct Tree {
     long int Age; //Возраст дерева
@@ -64,6 +72,8 @@ struct Plant {
         Shrub S;
         Flower F;
     };
+
+    Habitation H;
 };
 
 //Структура "контейнер"
@@ -104,7 +114,7 @@ bool Compare(Plant* First, Plant* Second);
 void In_Tree(Tree& T, ifstream& ifst);
 
 //Функция вывода дерева
-void Out_Tree(string Name, Tree& T, ofstream& ofst);
+void Out_Tree(string Name, Habitation H, Tree& T, ofstream& ofst);
 
 //Функция подсчета числа согласных букв в названии дерева
 int Tree_consonant_letters(string Name);
@@ -113,14 +123,14 @@ int Tree_consonant_letters(string Name);
 void In_Shrub(Shrub& S, ifstream& ifst);
 
 //Функция вывода кустарника
-void Out_Shrub(string Name, Shrub& S, ofstream& ofst);
+void Out_Shrub(string Name, Habitation H, Shrub& S, ofstream& ofst);
 
 //Функция подсчета числа согласных букв в названии кустарника
 int Shrub_consonant_letters(string Name);
 
 void In_Flower(Flower& F, ifstream& ifst);
 
-void Out_Flower(string Name, Flower& F, ofstream& ofst);
+void Out_Flower(string Name, Habitation H, Flower& F, ofstream& ofst);
 
 int Flower_consonant_letters(string Name);
 
