@@ -11,7 +11,8 @@ using namespace std;
 //Иднетификатор растения
 enum Key {
     TREE, //Дерево
-    SHRUB //Кустарник
+    SHRUB, //Кустарник
+    FLOWER //Цветок
 };
 
 //Структура "дерево"
@@ -40,6 +41,18 @@ struct Shrub {
     Month M; //Месяц цветения
 };
 
+//Структура "цветок"
+struct Flower {
+    //Тип цветка
+    enum Type {
+        HOME,
+        GARDEN,
+        WILD
+    };
+
+    Type T; //Тип цветка
+};
+
 //Структура "растение"
 struct Plant {
     Key K; //Идентификатор растения
@@ -49,6 +62,7 @@ struct Plant {
     union {
         Tree T;
         Shrub S;
+        Flower F;
     };
 };
 
@@ -103,5 +117,11 @@ void Out_Shrub(string Name, Shrub& S, ofstream& ofst);
 
 //Функция подсчета числа согласных букв в названии кустарника
 int Shrub_consonant_letters(string Name);
+
+void In_Flower(Flower& F, ifstream& ifst);
+
+void Out_Flower(string Name, Flower& F, ofstream& ofst);
+
+int Flower_consonant_letters(string Name);
 
 #endif // HEADER_H
