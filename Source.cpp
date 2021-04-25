@@ -32,6 +32,9 @@ void Out_Container(Container* Head, ofstream& ofst) {
     for (int i = 0; i < Head->Len; i++) {
         ofst << i << ": ";
         Out_Plant(Head->Cont, ofst);
+
+        ofst << "Amount of consonant letters in the name of plant = " << Plant_consonant_letters(Head->Cont) << endl << endl;
+
         Head = Head->Next;
     }
 }
@@ -41,6 +44,30 @@ void Clear_Container(Container* Head) {
         Head->Len = 0;
         free(Head->Cont);
         Head = Head->Next;
+    }
+}
+
+void Sort(Container* Head) {
+    if (Head->Len > 1) {
+        Container* First = Head;
+        Container* Second = Head->Next;
+
+        Container* Temp = new Container;
+
+        while (First->Next && First->Next->Next) {
+            while (Second && Second->Next) {
+                if (Compare(First->Cont, Second->Cont)) {
+                    Temp->Cont = First->Cont;
+                    First->Cont = Second->Cont;
+                    Second->Cont = Temp->Cont;
+                }
+
+                Second = Second->Next;
+            }
+
+            First = First->Next;
+            Second = First->Next;
+        }
     }
 }
 
@@ -82,6 +109,22 @@ void Out_Plant(Plant* P, ofstream& ofst) {
     }
 }
 
+int Plant_consonant_letters(Plant* P) {
+    if (P->K == TREE) {
+        return Tree_consonant_letters(P->Name);
+    }
+    else if (P->K == SHRUB) {
+        return Shrub_consonant_letters(P->Name);
+    }
+    else {
+        return -1;
+    }
+}
+
+bool Compare(Plant* First, Plant* Second) {
+    return Plant_consonant_letters(First) > Plant_consonant_letters(Second);
+}
+
 void In_Tree(Tree& T, ifstream& ifst) {
     ifst >> T.Age;
 }
@@ -89,6 +132,23 @@ void In_Tree(Tree& T, ifstream& ifst) {
 void Out_Tree(string Name, Tree& T, ofstream& ofst) {
     ofst << "It's a tree with name: " << Name << endl;
     ofst << "Tree's age is " << T.Age << endl << endl;
+}
+
+int Tree_consonant_letters(string Name) {
+    string Constant_letter = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ";
+
+    int Amount = 0;
+
+    for (int i = 0; i < Name.length(); i++) {
+        for (int j = 0; j < Constant_letter.length(); j++) {
+            if (Name[i] == Constant_letter[j]) {
+                Amount++;
+                break;
+            }
+        }
+    }
+
+    return Amount;
 }
 
 void In_Shrub(Shrub& S, ifstream& ifst) {
@@ -176,4 +236,21 @@ void Out_Shrub(string Name, Shrub& S, ofstream& ofst) {
     }
 
     ofst << endl << endl;
+}
+
+int Shrub_consonant_letters(string Name) {
+    string Constant_letter = "bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ";
+
+    int Amount = 0;
+
+    for (int i = 0; i < Name.length(); i++) {
+        for (int j = 0; j < Constant_letter.length(); j++) {
+            if (Name[i] == Constant_letter[j]) {
+                Amount++;
+                break;
+            }
+        }
+    }
+
+    return Amount;
 }
