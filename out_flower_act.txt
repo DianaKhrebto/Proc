@@ -1,0 +1,4 @@
+It's a flower with name: Chamomile
+Flower's type is Wild
+Flower's habitation is Taiga
+

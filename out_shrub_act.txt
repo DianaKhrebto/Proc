@@ -1,0 +1,4 @@
+It's a shrub with name: Syringa
+Shrub's flowering month is May
+Shrubs's habitation is Steppe
+

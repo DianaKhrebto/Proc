@@ -189,13 +189,13 @@ void Out_Plant(Plant* P, ofstream& ofst) {
 
 int Plant_consonant_letters(Plant* P) {
     if (P->K == TREE) {
-        return Tree_consonant_letters(P->Name);
+        return Tree_consonant_letters(P->Name)+1;
     }
     else if (P->K == SHRUB) {
-        return Shrub_consonant_letters(P->Name);
+        return Shrub_consonant_letters(P->Name)+2;
     }
     else if (P->K == FLOWER) {
-        return Flower_consonant_letters(P->Name);
+        return Flower_consonant_letters(P->Name)+3;
     }
     else {
         return -1;
